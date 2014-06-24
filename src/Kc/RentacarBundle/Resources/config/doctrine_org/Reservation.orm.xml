@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Reservation" table="reservation">
+    <indexes>
+      <index name="fk_reservation_user" columns="user_id"/>
+      <index name="fk_reservation_car_type1" columns="car_class_id"/>
+      <index name="fk_reservation_location1" columns="departure_location_id"/>
+      <index name="fk_reservation_location2" columns="return_location_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="departureAt" type="datetime" column="departure_at" nullable="false"/>
+    <field name="returnAt" type="datetime" column="return_at" nullable="false"/>
+    <field name="hasInsurance" type="boolean" column="has_insurance" nullable="false"/>
+    <field name="carSubtotal" type="decimal" column="car_subtotal" precision="9" scale="3" nullable="true"/>
+    <field name="optionSubtotal" type="decimal" column="option_subtotal" precision="9" scale="3" nullable="true"/>
+    <field name="totalAmount" type="decimal" column="total_amount" precision="9" scale="3" nullable="true"/>
+    <field name="note" type="text" column="note" nullable="true"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="false"/>
+    <many-to-one field="returnLocation" target-entity="Location">
+      <join-columns>
+        <join-column name="return_location_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="departureLocation" target-entity="Location">
+      <join-columns>
+        <join-column name="departure_location_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="carClass" target-entity="CarClass">
+      <join-columns>
+        <join-column name="car_class_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

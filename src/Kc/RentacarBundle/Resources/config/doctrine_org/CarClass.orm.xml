@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarClass" table="car_class">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="20" nullable="false"/>
+    <field name="carTypes" type="string" column="car_types" length="100" nullable="false"/>
+    <field name="seats" type="string" column="seats" length="20" nullable="false"/>
+    <field name="image" type="string" column="image" length="255" nullable="true"/>
+    <field name="price3" type="decimal" column="price3" precision="9" scale="3" nullable="false"/>
+    <field name="price6" type="decimal" column="price6" precision="9" scale="3" nullable="false"/>
+    <field name="price12" type="decimal" column="price12" precision="9" scale="3" nullable="false"/>
+    <field name="price24" type="decimal" column="price24" precision="9" scale="3" nullable="false"/>
+    <field name="insurancePrice" type="decimal" column="insurance_price" precision="9" scale="3" nullable="false"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="false"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="false"/>
+  </entity>
+</doctrine-mapping>
