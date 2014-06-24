@@ -1,0 +1,5 @@
+kc_rentacar:
+    resource: "@KcRentacarBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
